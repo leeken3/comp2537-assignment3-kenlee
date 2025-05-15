@@ -1,0 +1,174 @@
+/* Light Theme (default) */
+:root {
+  --bg-color: #f0f4f8;
+  --text-color: #222;
+  --card-back-bg: #ddd;
+  --card-border-color: #ccc;
+  --status-bg: #fff;
+  --button-bg: #fff;
+  --button-hover-bg: #eee;
+}
+
+/* Dark Theme overrides */
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --card-back-bg: #333;
+  --card-border-color: #555;
+  --status-bg: #222;
+  --button-bg: #222;
+  --button-hover-bg: #444;
+}
+
+/* Button text white on hover/focus in dark theme */
+body.dark-theme button:hover,
+body.dark-theme button:focus,
+body.dark-theme select:hover,
+body.dark-theme select:focus {
+  color: white;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+#controls, #status {
+  margin: 20px auto;
+  font-size: 18px;
+  background-color: var(--status-bg);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border-color);
+  max-width: 800px;
+  width: 90vw;
+  box-sizing: border-box;
+}
+
+button, select {
+  padding: 8px 14px;
+  font-size: 16px;
+  margin: 0 6px;
+  border-radius: 5px;
+  border: 1px solid var(--card-border-color);
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, select:hover, select:focus, button:focus {
+  background-color: var(--button-hover-bg);
+  outline: none;
+}
+
+#game_grid {
+  width: 90vw;
+  max-width: 800px;
+  margin: 10px auto 40px;
+  display: grid;
+  gap: 10px;
+  perspective: 1000px;
+  border: 2px solid #FFCC01;
+  padding: 10px;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+#game_grid.easy {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#game_grid.medium {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#game_grid.hard {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background-color: var(--card-back-bg);
+  border: 1px solid var(--card-border-color);
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.front_face, .back_face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.front_face {
+  transform: rotateY(180deg);
+  z-index: 2;
+}
+
+.back_face {
+  background-color: var(--card-back-bg);
+  z-index: 3;
+}
+
+#themeToggle {
+  margin-left: 10px;
+}
+
+#powerUpBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+}
+
+#controls, #status {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+}
+
+.text-shadow {
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    0 0 5px rgba(0, 0, 0, 0.7);
+}
